@@ -8,25 +8,29 @@ var packageJson       = JSON.parse(packageJsonString);
 //@formatter:on
 
 var baseConfig = {
-  context: __dirname + '/src',
-  entry:   './index.js',
-  output:  {
+  context:   __dirname + '/src',
+  entry:     './index.js',
+  output:    {
     path:     __dirname + '/dist',
     filename: packageJson.name + '.js'
   },
-  stats:   {
+  stats:     {
     colors:  true,
     reasons: true
   },
-  plugins: [ ],
-  module:  {
+  plugins:   [],
+  module:    {
     loaders: [
       {test: /\.js$/, loader: 'ng-annotate!babel!jshint', exclude: /node_modules/}
     ]
   },
-  jshint:  {
+  jshint:    {
     failOnHint: false,
     emitErrors: false
+  },
+  externals: {
+    angular:             'angular',
+    'angular-translate': 'angular'
   }
 };
 

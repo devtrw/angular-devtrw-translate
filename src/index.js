@@ -1,7 +1,6 @@
-// fixme: how should imports be handled for distributed software?
-//import 'angular-translate';
-//
-//import angular from 'angular';
+import 'angular-translate';
+
+import angular from 'angular';
 
 import dtrwTranslateBaseDirective  from './translate-base-directive';
 import dtrwTranslateChildDirective from './translate-child-directive';
