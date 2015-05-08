@@ -1,0 +1,36 @@
+{
+  "name": "angular-devtrw-translate",
+  "main": [
+    "dist/angular-devtrw-translate.js"
+    ],
+  "version": "0.1.0",
+  "description": "Provides translate-base and translate-child directives for angular-translate",
+  "authors": [
+    "Steven Nance <steven@devtrw.com>"
+  ],
+  "keywords": [
+    "angular",
+    "angularjs",
+    "javascript",
+    "translate",
+    "translations",
+    "angular-translate"
+  ],
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "gulpfile.js",
+    "node_modules",
+    "package.json",
+    "src"
+  ],
+  "overrides": {
+    "angular": {
+      "ignore": true
+    }
+  },
+  "dependencies": {
+    "angular": "*",
+  },
+  "devDependencies": { }
+}

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html ng-app="dtrw.translate">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Angular DevTRW Translations Demo</title>
+  <style>
+    .page {
+      border: 1px solid #eee;
+      width: 300px;
+      padding: 15px;
+    }
+
+    .label {
+      display: block;
+    }
+
+    input {
+      width: 100%;
+    }
+  </style>
+</head>
+<body translate-base="dtrw.translate">
+  <h1>Angular DevTRW Translations Demo</h1>
+
+  <h2>Example Usage</h2>
+
+  <h3>Template HTML</h3>
+  <pre>
+    &lt;body translate-base="dtrw.translate"&gt;
+      &lt;div translate-base="states.login"
+           class="page"
+           ng-init="lastLoginUsername = 'someUserName'"&gt;
+        &lt;div translate-base="LAST_LOGIN"&gt;
+          &lt;p translate-child="DETAILS" translate-values="{username: lastLoginUsername}"&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div translate-base="USERNAME_FORM"&gt;
+          &lt;h4 translate-child="TITLE"&gt;&lt;/h4&gt;
+
+          &lt;form&gt;
+            &lt;div class="form-group" translate-base="USERNAME"&gt;
+              &lt;label translate-child="LABEL" for="username-input"&gt;&lt;/label&gt;
+              &lt;input type="text"
+                     id="username-input"
+                     translate-child="PLACEHOLDER"
+                     translate-values="{lastLoginUser: lastLoginUsername}"
+                     translate-child-into="placeholder"&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;div translate-base="PASSWORD_FORM"&gt;
+          &lt;h4 translate-child="TITLE"&gt;&lt;/h4&gt;
+
+          &lt;form&gt;
+            &lt;div class="form-group" translate-base="PASSWORD"&gt;
+              &lt;label translate-child="LABEL" for="password-input"&gt;&lt;/label&gt;
+              &lt;input type="text" id="password-input"
+                     translate-child="PLACEHOLDER"
+                     translate-child-into="placeholder"&gt;
+            &lt;/div&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+  </pre>
+  <h3>Translations</h3>
+  <pre ng-non-bindable>
+    angular.module('dtrw.translate').config(function ($translateProvider) {
+      $translateProvider.preferredLanguage('en');
+      $translateProvider.translations('en', {
+        dtrw: {
+          translate: {
+            states: {
+              login: {
+                LAST_LOGIN: {
+                  DETAILS: 'Last logging in as &lt;b&gt;{{ username }}&lt;/b&gt;'
+                },
+                USERNAME_FORM: {
+                  TITLE:    'Username Form',
+                  USERNAME: {
+                    LABEL:       'Username',
+                    PLACEHOLDER: '{{ lastLoginUser }}'
+                  }
+                },
+                PASSWORD_FORM: {
+                  TITLE:    'Password Form',
+                  PASSWORD: {
+                    LABEL:       'Password',
+                    PLACEHOLDER: 'Enter Your Password'
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+    })
+  </pre>
+
+
+  <h3>Rendered</h3>
+
+  <div translate-base="states.login"
+       class="page"
+       ng-init="lastLoginUsername = 'someUserName'">
+    <div translate-base="LAST_LOGIN">
+      <p translate-child="DETAILS" translate-values="{username: lastLoginUsername}"></p>
+    </div>
+    <div translate-base="USERNAME_FORM">
+      <h4 translate-child="TITLE"></h4>
+
+      <form>
+        <div class="form-group" translate-base="USERNAME">
+          <label translate-child="LABEL" for="username-input"></label>
+          <input type="text"
+                 id="username-input"
+                 translate-child="PLACEHOLDER"
+                 translate-values="{lastLoginUser: lastLoginUsername}"
+                 translate-child-into="placeholder">
+        </div>
+      </form>
+    </div>
+    <div translate-base="PASSWORD_FORM">
+      <h4 translate-child="TITLE"></h4>
+
+      <form>
+        <div class="form-group" translate-base="PASSWORD">
+          <label translate-child="LABEL" for="password-input"></label>
+          <input type="text" id="password-input"
+                 translate-child="PLACEHOLDER"
+                 translate-child-into="placeholder">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../node_modules/angular-translate/dist/angular-translate.js"></script>
+  <script src="../dist/angular-devtrw-translate.js"></script>
+  <script>
+    angular.module('dtrw.translate').config(function ($translateProvider) {
+      $translateProvider.preferredLanguage('en');
+      $translateProvider.translations('en', {
+        dtrw: {
+          translate: {
+            states: {
+              login: {
+                LAST_LOGIN: {
+                  DETAILS: 'Last logging in as <b>{{ username }}</b>'
+                },
+                USERNAME_FORM: {
+                  TITLE:    'Username Form',
+                  USERNAME: {
+                    LABEL:       'Username',
+                    PLACEHOLDER: '{{ lastLoginUser }}'
+                  }
+                },
+                PASSWORD_FORM: {
+                  TITLE:    'Password Form',
+                  PASSWORD: {
+                    LABEL:       'Password',
+                    PLACEHOLDER: 'Enter Your Password'
+                  }
+                }
+              }
+            }
+          }
+        }
+      });
+    })
+  </script>
+</body>
+</html>
