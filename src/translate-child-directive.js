@@ -1,17 +1,6 @@
 /*@ngInject*/
 function dtrwTranslateChildDirective($compile, $translate) {
 
-  function rebuildElement(element, translateKey, translateInto, translateValues) {
-    if (translateInto) {
-      element.attr(translateInto, $translate.instant(translateKey, translateValues));
-      element.removeAttr('translate-child-into'); //remove the attribute to avoid indefinite loop
-    } else {
-      element.attr('translate', translateKey);
-    }
-
-    element.removeAttr('translate-child'); //remove the attribute to avoid indefinite loop
-  }
-
   return {
     restrict: 'A',
     replace:  false,
@@ -20,16 +9,24 @@ function dtrwTranslateChildDirective($compile, $translate) {
     require: '^translateBase',
     // Make sure this directive is run first
     priority: 1000,
-    link:     function link(scope, element, attrs, translateBaseCtrl) {
+    link:     function link(scope, element, attrs, translateBaseCtrl) { // jshint ignore:line
+      let {translateChildInto, translateChildKeyInto, translateValues} = attrs;
       let translateKey = translateBaseCtrl.getTranslationKey(attrs.translateChild);
-      let translateInto = attrs.translateChildInto;
-      let translateValues;
 
-      if (translateInto && attrs.translateValues) {
-        translateValues = scope.$eval(attrs.translateValues);
+      if (translateChildInto && translateChildKeyInto) {
+        throw new Error('translate-child-into and translate-child-key-into are mutually exclusive');
       }
 
-      rebuildElement(element, translateKey, translateInto, translateValues);
+      if (translateChildInto) {
+        translateValues = (translateValues) ? scope.$eval(translateValues) : {};
+        element.attr(translateChildInto, $translate.instant(translateKey, translateValues));
+      } else if (translateChildKeyInto) {
+        element.attr(translateChildKeyInto, translateKey);
+      } else {
+        element.attr('translate', translateKey);
+      }
+
+      element.removeAttr('translate-child'); //remove the attribute to avoid indefinite loop
 
       $compile(element)(scope);
     }
