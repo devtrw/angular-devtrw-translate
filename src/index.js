@@ -1,7 +1,6 @@
 import 'angular-translate';
 import 'angular-ui-router';
 import 'angular-devtrw-filters';
-import 'babel/polyfill';
 
 import angular from 'angular';
 

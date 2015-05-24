@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 /**
  * @name dtrw.translate.dtrwTranslateProvider
  */
@@ -59,7 +61,7 @@ function dtrwTranslateProvider() {
         return parts.join('.');
       }
 
-      Object.assign(dtrwTranslate, {
+      angular.extend(dtrwTranslate, {
         getStateKey
       });
     }
@@ -67,7 +69,7 @@ function dtrwTranslateProvider() {
     return new DtrwTranslate();
   }
 
-  Object.assign(this, {
+  angular.extend(this, {
     $get,
     setBaseTranslationKey
   });
