@@ -1,6 +1,6 @@
 {
   "name": "angular-devtrw-translate",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "Steven Nance <steven@devtrw.com>",
   "homepage": "https://github.com/devtrw/angular-devtrw-translate",
   "repository": {
@@ -24,28 +24,31 @@
   "description": "Provides translate-base and translate-child directives for angular-translate",
   "peerDependencies": {
     "angular": "*",
-    "angular-translate": "*"
+    "angular-devtrw-filters": "*",
+    "angular-translate": "*",
+    "angular-ui-router": "*"
   },
   "devDependencies": {
-    "angular": "^1.4.0-rc.1",
-    "angular-mocks": "^1.4.0-rc.1",
-    "babel-core": "^5.1.13",
-    "babel-loader": "^5.0.0",
-    "chai": "^2.3.0",
-    "deep-extend": "^0.3.3",
-    "jshint": "^2.7.0",
-    "jshint-loader": "^0.8.3",
-    "karma": "^0.12.31",
-    "karma-chai": "^0.1.0",
-    "karma-mocha": "^0.1.10",
-    "karma-phantomjs-launcher": "^0.1.4",
-    "karma-webpack": "^1.5.0",
-    "mocha": "^2.2.4",
+    "angular": "1.4.0-rc.1",
+    "angular-devtrw-filters": "1.0.9",
+    "angular-mocks": "1.4.0-rc.1",
+    "angular-translate": "2.7.0",
+    "angular-ui-router": "0.2.15",
+    "babel": "^5.4.7",
+    "babel-core": "5.1.13",
+    "babel-loader": "5.0.0",
+    "chai": "2.3.0",
+    "deep-extend": "0.3.3",
+    "jshint": "2.7.0",
+    "jshint-loader": "0.8.3",
+    "karma": "0.12.31",
+    "karma-chai": "0.1.0",
+    "karma-mocha": "0.1.10",
+    "karma-phantomjs-launcher": "0.1.4",
+    "karma-webpack": "1.5.0",
+    "mocha": "2.2.4",
     "ng-annotate-loader": "0.0.2",
-    "uglify-loader": "^1.2.0",
-    "webpack": "^1.8.10"
-  },
-  "dependencies": {
-    "angular-translate": "^2.7.0"
+    "uglify-loader": "1.2.0",
+    "webpack": "1.8.10"
   }
 }

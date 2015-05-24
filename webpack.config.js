@@ -29,8 +29,10 @@ var baseConfig = {
     emitErrors: false
   },
   externals: {
-    angular:             'angular',
-    'angular-translate': 'angular'
+    angular:                  'angular',
+    'angular-devtrw-filters': 'angular',
+    'angular-translate':      'angular',
+    'angular-ui-router':      'angular'
   }
 };
 

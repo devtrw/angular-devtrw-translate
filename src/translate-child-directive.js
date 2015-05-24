@@ -1,4 +1,3 @@
-/*@ngInject*/
 function dtrwTranslateChildDirective($compile, $translate) {
 
   return {
@@ -33,4 +32,4 @@ function dtrwTranslateChildDirective($compile, $translate) {
   };
 }
 
-export default dtrwTranslateChildDirective;
+export default /*@ngInject*/ dtrwTranslateChildDirective;

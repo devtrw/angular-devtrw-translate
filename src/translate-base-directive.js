@@ -1,4 +1,3 @@
-/*@ngInject*/
 function dtrwTranslateBaseDirective($translate) {
   return {
     restrict:   'A',
@@ -45,4 +44,4 @@ function dtrwTranslateBaseDirective($translate) {
   };
 }
 
-export default dtrwTranslateBaseDirective;
+export default /*@ngInject*/ dtrwTranslateBaseDirective;
