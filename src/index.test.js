@@ -13,7 +13,7 @@ describe(ngModule.name, () => {
       dtrwTranslateProvider.setBaseTranslationKey('dtrw');
     }));
 
-    beforeEach(function () {
+    beforeEach(() => {
       inject($injector => {
         $state = $injector.get('$state');
         dtrwTranslate = $injector.get('dtrwTranslate');
@@ -32,13 +32,25 @@ describe(ngModule.name, () => {
     });
   });
 
-  describe('dtrwTranslate service missing configuration', () => {
+  describe('dtrwTranslate service without configuration', () => {
     beforeEach(window.module(ngModule.name));
 
-    it('should throw an error when the base translation key is not configured', () => {
-      assert.throws(() => {
-        inject($injector => $injector.get('dtrwTranslate'));
+    beforeEach(() => {
+      inject($injector => {
+        $state = $injector.get('$state');
+        dtrwTranslate = $injector.get('dtrwTranslate');
       });
+    });
+
+    beforeEach(() => {
+      $state.current = {name: 'app.states.some-state-name'};
+    });
+
+    it('should combine the state name, and the passed in key', () => {
+      assert.equal(
+        dtrwTranslate.getStateKey('CHILD.TRANSLATION.KEY'),
+        'app.states.someStateName.CHILD.TRANSLATION.KEY'
+      );
     });
   });
 });

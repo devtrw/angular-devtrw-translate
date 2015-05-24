@@ -27,12 +27,6 @@ function dtrwTranslateProvider() {
    * @ngInject
    */
   function $get($filter, $state) {
-    if (!baseTranslationKey) {
-      throw new Error(
-        'Expected base translation key is not set. ' +
-        'This can be set by calling dtrwTranslateProvider#setBaseTranslationKey()'
-      );
-    }
     /**
      * @name dtrw.translate.dtrwTranslate
      * @constructor
@@ -53,7 +47,7 @@ function dtrwTranslateProvider() {
        * @returns {string}
        */
       function getStateKey(key) {
-        let parts = [baseTranslationKey];
+        let parts = baseTranslationKey ? [baseTranslationKey] : [];
 
         parts.push(...$state.current.name.split('.').map($filter('hyphenatedToCamelCase')));
         parts.push(key);
