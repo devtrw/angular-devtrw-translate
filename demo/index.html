@@ -57,6 +57,10 @@
                      translate-child="PLACEHOLDER"
                      translate-child-into="placeholder"&gt;
             &lt;/div&gt;
+            &lt;div translate-base="dtrw.translate.forms.ACTIONS"
+                 translate-exclude-parent-base="true"&gt;
+              &lt;button type="button" translate-child="SUBMIT.BUTTON"&gt;&lt;/button&gt;
+            &lt;/div&gt;
           &lt;/form&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -69,6 +73,13 @@
       $translateProvider.translations('en', {
         dtrw: {
           translate: {
+            forms: {
+              ACTIONS: {
+                SUBMIT: {
+                  BUTTON: 'Submit'
+                }
+              }
+            },
             states: {
               login: {
                 LAST_LOGIN: {
@@ -129,11 +140,17 @@
                  translate-child="PLACEHOLDER"
                  translate-child-into="placeholder">
         </div>
+        <div translate-base="dtrw.translate.forms.ACTIONS"
+             translate-exclude-parent-base="true">
+          <button type="button" translate-child="SUBMIT.BUTTON"></button>
+        </div>
       </form>
     </div>
   </div>
 
   <script src="../node_modules/angular/angular.js"></script>
+  <script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="../node_modules/angular-devtrw-filters/dist/dtrw.filters.js"></script>
   <script src="../node_modules/angular-translate/dist/angular-translate.js"></script>
   <script src="../dist/angular-devtrw-translate.js"></script>
   <script>
@@ -142,6 +159,13 @@
       $translateProvider.translations('en', {
         dtrw: {
           translate: {
+            forms: {
+              ACTIONS: {
+                SUBMIT: {
+                  BUTTON: 'Submit'
+                }
+              }
+            },
             states: {
               login: {
                 LAST_LOGIN: {

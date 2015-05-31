@@ -28,16 +28,16 @@ function dtrwTranslateBaseDirective($translate) {
         // using pre-link to ensure that the base key is set
         // before the translate-child directive requests it
         pre: function preLink(scope, element, attrs, controller) {
-          let baseKey = attrs.translateBase;
+          let {translateBase, translateExcludeParentBase} = attrs;
           let parentBaseController = element.parent().controller('translateBase');
 
           scope.translateBaseCtrl = controller;
 
-          if (parentBaseController) {
-            baseKey = parentBaseController.getTranslationKey(baseKey);
+          if (parentBaseController && !translateExcludeParentBase) {
+            translateBase = parentBaseController.getTranslationKey(translateBase);
           }
 
-          controller.setBaseKey(baseKey);
+          controller.setBaseKey(translateBase);
         }
       };
     }
