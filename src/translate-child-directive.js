@@ -27,7 +27,6 @@ function dtrwTranslateChildDirective($compile, $translate) {
   }
 
   function parseTranslateChildAttr(attribute) {
-    console.log('parsing: ', attribute);
     let parts = attribute.split('=');
 
     // by default we just set the translation key on the `translate` attributes
@@ -41,14 +40,11 @@ function dtrwTranslateChildDirective($compile, $translate) {
 
     let parsedAttributes = parseTranslateChildAttributes(parts[0]);
 
-    let parsed = {
+    return {
       translateKey:    parts[1],
       keyAttributes:   parsedAttributes[0],
       valueAttributes: parsedAttributes[1]
     };
-    console.log('parsed: ', parsed);
-
-    return parsed;
   }
 
   return {
