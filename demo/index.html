@@ -61,7 +61,7 @@
        class="page"
        ng-init="lastLoginUsername = 'someUserName'">
     <div class="example">
-      <h4>translate-values</h4>
+      <h4>translate child using `translate-values`</h4>
       <hr>
       <div translate-base="LAST_LOGIN">
         <p translate-child="DETAILS" translate-values="{username: lastLoginUsername}"></p>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="example">
-      <h4>translate-child-into</h4>
+      <h4>translate child into attribute</h4>
       <hr>
       <div translate-base="PASSWORD_FORM">
         <h4 translate-child="TITLE"></h4>
@@ -78,24 +78,14 @@
           <div class="form-group" translate-base="PASSWORD">
             <label translate-child="LABEL" for="password-input"></label>
             <input type="text" id="password-input"
-                   translate-child="PLACEHOLDER"
-                   translate-child-into="placeholder">
+                   translate-child="(placeholder)=PLACEHOLDER">
           </div>
         </form>
       </div>
     </div>
 
-    <div class="example" translate-base="GOOGLE_LINK">
-      <h4>translate-child-into <em>with multiple target attributes</em></h4>
-      <hr>
-      <a href="https://google.com"
-         translate-child="TEXT"
-         translate-child-into="title,arial-label"
-         translate-child-key-into="translate"></a>
-    </div>
-
     <div class="example">
-      <h4>translate-values <em>and</em> translate-child-into</h4>
+      <h4>translate child into attribute with translate-values</h4>
       <hr>
       <div translate-base="USERNAME_FORM">
         <h4 translate-child="TITLE"></h4>
@@ -105,16 +95,21 @@
             <label translate-child="LABEL" for="username-input"></label>
             <input type="text"
                    id="username-input"
-                   translate-child="PLACEHOLDER"
-                   translate-values="{lastLoginUser: lastLoginUsername}"
-                   translate-child-into="placeholder">
+                   translate-child="(placeholder)=PLACEHOLDER"
+                   translate-values="{lastLoginUser: lastLoginUsername}">
           </div>
         </form>
       </div>
     </div>
 
+    <div class="example" translate-base="GOOGLE_LINK">
+      <h4>translate child key into attribute</h4>
+      <hr>
+      <a href="https://google.com" translate-child="(title,aria-label,!translate)=TEXT"></a>
+    </div>
+
     <div class="example">
-      <h4>translate-exclude-parent-base</h4>
+      <h4>exclude parent translate base</h4>
       <hr>
       <div translate-base="PASSWORD_FORM">
         <div translate-base="dtrw.translate.forms.ACTIONS"
