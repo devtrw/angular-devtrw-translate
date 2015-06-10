@@ -5,23 +5,33 @@ function dtrwTranslateChildDirective($compile, $translate) {
     replace:  false,
     // Stop other directives from running (they will be run with $compile is called)
     terminal: true,
-    require: '^translateBase',
+    require:  '?^^translateBase',
     // Make sure this directive is run first
     priority: 1000,
     link:     function link(scope, element, attrs, translateBaseCtrl) { // jshint ignore:line
       let {translateChildInto, translateChildKeyInto, translateValues} = attrs;
-      let translateKey = translateBaseCtrl.getTranslationKey(attrs.translateChild);
+      let translateKey = translateBaseCtrl ?
+        translateBaseCtrl.getTranslationKey(attrs.translateChild) :
+        `COULD_NOT_FIND_TRANSLATE_BASE_CONTROLLER_FOR_CHILD-${attrs.translateChild}`;
 
-      if (translateChildInto && translateChildKeyInto) {
-        throw new Error('translate-child-into and translate-child-key-into are mutually exclusive');
+      function setValueForAttrs(targetAttrs, value) {
+        targetAttrs
+          .split(',')
+          .forEach((targetAttrs) => {
+            element.attr(targetAttrs, value);
+          });
       }
 
       if (translateChildInto) {
         translateValues = (translateValues) ? scope.$eval(translateValues) : {};
-        element.attr(translateChildInto, $translate.instant(translateKey, translateValues));
-      } else if (translateChildKeyInto) {
-        element.attr(translateChildKeyInto, translateKey);
-      } else {
+        setValueForAttrs(translateChildInto, $translate.instant(translateKey, translateValues));
+      }
+
+      if (translateChildKeyInto) {
+        setValueForAttrs(translateChildKeyInto, translateKey);
+      }
+
+      if (!translateChildInto && !translateChildKeyInto) {
         element.attr('translate', translateKey);
       }
 

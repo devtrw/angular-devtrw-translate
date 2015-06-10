@@ -3,7 +3,7 @@
   "main": [
     "dist/angular-devtrw-translate.js"
     ],
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Provides translate-base and translate-child directives for angular-translate",
   "authors": [
     "Steven Nance <steven@devtrw.com>"
