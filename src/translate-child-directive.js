@@ -1,8 +1,14 @@
 function dtrwTranslateChildDirective($compile, $translate) {
 
   function setValueForAttrs(element, targetAttrs, value) {
-    targetAttrs.forEach((targetAttrs) => {
-      element.attr(targetAttrs, value);
+    targetAttrs.forEach((targetAttr) => {
+      // allow directly setting the content of an element, essentially the same as using
+      // the translate filter within the element
+      if ('content' === targetAttr) {
+        element.html(value);
+      } else {
+        element.attr(targetAttr, value);
+      }
     });
   }
 
